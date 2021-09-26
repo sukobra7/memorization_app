@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "321939902604",
+    "project_id": "memorization-app-6806d",
+    "storage_bucket": "memorization-app-6806d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321939902604:android:6b91cc0fa73948bacf6ba9",
+        "android_client_info": {
+          "package_name": "net.nakamura.memorization_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321939902604-tq7r9mi2h9vf94l4u5nnpj5rmqcae8b9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbTs0e5lYX4s3Q0tGBbRAx5eRsnxq-nj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321939902604-tq7r9mi2h9vf94l4u5nnpj5rmqcae8b9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "321939902604-07ps9a1bh034j52iees5v25re1233k9j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "net.nakamura.memorizationApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

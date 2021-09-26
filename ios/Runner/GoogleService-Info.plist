@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>321939902604-07ps9a1bh034j52iees5v25re1233k9j.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.321939902604-07ps9a1bh034j52iees5v25re1233k9j</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB7ucHVJWmMQOVZRgCRTgRfeQCDIuD8ojM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>321939902604</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>net.nakamura.memorizationApp</string>
+	<key>PROJECT_ID</key>
+	<string>memorization-app-6806d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>memorization-app-6806d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:321939902604:ios:ec21407a9cc99f8bcf6ba9</string>
+</dict>
+</plist>
