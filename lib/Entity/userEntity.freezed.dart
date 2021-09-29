@@ -13,16 +13,16 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 UserEntity _$UserEntityFromJson(Map<String, dynamic> json) {
-  return _User.fromJson(json);
+  return _UserEntity.fromJson(json);
 }
 
 /// @nodoc
 class _$UserEntityTearOff {
   const _$UserEntityTearOff();
 
-  _User call(
+  _UserEntity call(
       {required String name, required String email, required String password}) {
-    return _User(
+    return _UserEntity(
       name: name,
       email: email,
       password: password,
@@ -89,21 +89,23 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserCopyWith<$Res> implements $UserEntityCopyWith<$Res> {
-  factory _$UserCopyWith(_User value, $Res Function(_User) then) =
-      __$UserCopyWithImpl<$Res>;
+abstract class _$UserEntityCopyWith<$Res> implements $UserEntityCopyWith<$Res> {
+  factory _$UserEntityCopyWith(
+          _UserEntity value, $Res Function(_UserEntity) then) =
+      __$UserEntityCopyWithImpl<$Res>;
   @override
   $Res call({String name, String email, String password});
 }
 
 /// @nodoc
-class __$UserCopyWithImpl<$Res> extends _$UserEntityCopyWithImpl<$Res>
-    implements _$UserCopyWith<$Res> {
-  __$UserCopyWithImpl(_User _value, $Res Function(_User) _then)
-      : super(_value, (v) => _then(v as _User));
+class __$UserEntityCopyWithImpl<$Res> extends _$UserEntityCopyWithImpl<$Res>
+    implements _$UserEntityCopyWith<$Res> {
+  __$UserEntityCopyWithImpl(
+      _UserEntity _value, $Res Function(_UserEntity) _then)
+      : super(_value, (v) => _then(v as _UserEntity));
 
   @override
-  _User get _value => super._value as _User;
+  _UserEntity get _value => super._value as _UserEntity;
 
   @override
   $Res call({
@@ -111,7 +113,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserEntityCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
   }) {
-    return _then(_User(
+    return _then(_UserEntity(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -130,12 +132,12 @@ class __$UserCopyWithImpl<$Res> extends _$UserEntityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_User implements _User {
-  const _$_User(
+class _$_UserEntity implements _UserEntity {
+  const _$_UserEntity(
       {required this.name, required this.email, required this.password});
 
-  factory _$_User.fromJson(Map<String, dynamic> json) =>
-      _$_$_UserFromJson(json);
+  factory _$_UserEntity.fromJson(Map<String, dynamic> json) =>
+      _$_$_UserEntityFromJson(json);
 
   @override
   final String name;
@@ -152,7 +154,7 @@ class _$_User implements _User {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _User &&
+        (other is _UserEntity &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.email, email) ||
@@ -171,22 +173,23 @@ class _$_User implements _User {
 
   @JsonKey(ignore: true)
   @override
-  _$UserCopyWith<_User> get copyWith =>
-      __$UserCopyWithImpl<_User>(this, _$identity);
+  _$UserEntityCopyWith<_UserEntity> get copyWith =>
+      __$UserEntityCopyWithImpl<_UserEntity>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_UserToJson(this);
+    return _$_$_UserEntityToJson(this);
   }
 }
 
-abstract class _User implements UserEntity {
-  const factory _User(
+abstract class _UserEntity implements UserEntity {
+  const factory _UserEntity(
       {required String name,
       required String email,
-      required String password}) = _$_User;
+      required String password}) = _$_UserEntity;
 
-  factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
+  factory _UserEntity.fromJson(Map<String, dynamic> json) =
+      _$_UserEntity.fromJson;
 
   @override
   String get name => throw _privateConstructorUsedError;
@@ -196,5 +199,6 @@ abstract class _User implements UserEntity {
   String get password => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;
+  _$UserEntityCopyWith<_UserEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
