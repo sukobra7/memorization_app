@@ -4,6 +4,6 @@ part 'userEntity.freezed.dart';
 
 @freezed
 class UserEntity with _$UserEntity {
-  const factory UserEntity({required String name, required String email, required String password }) = _User;
+  const factory UserEntity({required String name, required String email, required String password }) = _UserEntity;
   factory UserEntity.fromJson(Map<String, dynamic> json) => _$UserEntityFromJson(json);
 } 
