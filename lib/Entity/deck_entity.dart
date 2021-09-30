@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'deckEntity.freezed.dart';
+part 'deck_entity.freezed.dart';
+part 'deck_entity.g.dart';
+
 
 @freezed
 class DeckEntity with _$DeckEntity {
