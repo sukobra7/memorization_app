@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'cardEntity.freezed.dart';
+part 'card_entity.freezed.dart';
+part 'card_entity.g.dart';
 
 @freezed
 class CardEntity with _$CardEntity {
