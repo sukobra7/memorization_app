@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'userEntity.freezed.dart';
+part 'user_entity.freezed.dart';
+part 'user_entity.g.dart';
 
 @freezed
 class UserEntity with _$UserEntity {
