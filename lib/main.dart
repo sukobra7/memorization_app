@@ -1,68 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:memorization_app/provider/auth_provider.dart';
+import 'package:memorization_app/ui/login_page.dart';
+import 'package:memorization_app/ui/signin_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(ProviderScope(child: MyApp(),
+  runApp(ProviderScope(
+    child: MyApp(),
   ));
 }
-
-class MyApp extends StatelessWidget {
+class MyApp extends HookConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      home: AuthConfirm(),
     );
   }
 }
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+class AuthConfirm extends HookConsumerWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+  Widget build(BuildContext context, ref) {
+    return ref.watch(authStateChangesProvider)
+    .when(data: (user) {
+      if (user == null) return SignInPage();
+      return Scaffold(
+        body: LogInPage(),
+        // body: DeckIndexPage(),
+      );
+    },
+    error: (error, stack) => Text('予期しないエラーが発生しました。'),
+    loading: () => CircularProgressIndicator());
   }
 }
+
