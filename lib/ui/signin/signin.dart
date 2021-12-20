@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memorization_app/provider/auth_provider.dart';
 
 class SignInPage extends HookConsumerWidget {
-  
   @override
   Widget build(BuildContext context, ref) {
+    final text = useState<String>("");
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
@@ -14,22 +15,28 @@ class SignInPage extends HookConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Sign in",
-              style: TextStyle(
-                fontStyle: FontStyle.normal,
-                fontSize: 30,
-                color: Colors.white
-              ),
-            ),
-            SizedBox(height: 50),
             TextFormField(
               decoration: InputDecoration(
+                hintText: 'username',
+                fillColor: Colors.white,
+                filled: true,
+                prefixIcon: Icon(Icons.person),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+              onChanged: (val) => {text.value = val},
+            ),
+            Text(text.value),
+            SizedBox(height: 30),
+            TextFormField(
+              decoration: InputDecoration(
+                hintText: 'email',
                 fillColor: Colors.white,
                 filled: true,
                 prefixIcon: Icon(Icons.email),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
             ),
@@ -37,17 +44,20 @@ class SignInPage extends HookConsumerWidget {
             TextFormField(
               obscureText: true,
               decoration: InputDecoration(
+                hintText: 'password',
                 fillColor: Colors.white,
                 filled: true,
                 prefixIcon: Icon(Icons.lock),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
+              onChanged: (val) => {text.value = val},
             ),
+            Text(text.value),
             SizedBox(height: 30),
             ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: 500),
+                constraints: BoxConstraints(maxWidth: 100),
                 child: SizedBox(
                     width: screenWidth * 0.8,
                     child: ElevatedButton(
@@ -59,8 +69,10 @@ class SignInPage extends HookConsumerWidget {
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
-                      onPressed: () {
-                        ref.read(UserAuthRepositoryProvider).register("a@example.com", "yyyyyyyyy", " よう");
+                      onPressed: () async {
+                        await ref
+                            .read(UserAuthRepositoryProvider)
+                            .register(text.value, text.value, text.value);
                       },
                     )))
           ],

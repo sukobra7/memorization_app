@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:memorization_app/entity/user_entity.dart';
 import 'package:memorization_app/firestore/firestore_instance.dart';
@@ -21,8 +22,8 @@ class UserRepository {
         throw CustomException();
       }
       return user[0];
-    } catch (e) {
-      throw CustomException();
+    } on FirebaseException catch (e) {
+      throw CustomException(message: e.message);
     }
   }
 
@@ -37,19 +38,25 @@ class UserRepository {
         "email": email ?? data.email,
         "password": password ?? data.password
       });
-    } catch (e) {
-      throw CustomException();
+    } on FirebaseException catch (e) {
+      throw CustomException(message: e.message);
     }
   }
 
-  Future<UserEntity> createUser(String name, String email, String password) async {
+  Future<UserEntity> createUser(
+      String name, String email, String password, String? userId) async {
     try {
       final userRef = await read(firebaseFirestoreProvider)
           .collection('users')
-          .add({"name": name, "email": email, "password": password});
+          .add({
+        "name": name,
+        "email": email,
+        "password": password,
+        "userId": userId
+      });
       return UserEntity.fromJson(await userRef.get().then((x) => x.data()!));
-    } catch (e) {
-      throw CustomException();
+    } on FirebaseException catch (e) {
+      throw CustomException(message: e.message);
     }
   }
 
@@ -58,8 +65,8 @@ class UserRepository {
       final targetUser =
           await read(firebaseFirestoreProvider).collection('users').doc(name);
       targetUser.delete();
-    } catch (e) {
-      throw CustomException();
+    } on FirebaseException catch (e) {
+      throw CustomException(message: e.message);
     }
   }
 }

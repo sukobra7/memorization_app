@@ -20,15 +20,10 @@ class UserAuthRepository {
       if (credential.user == null) {
         throw CustomException(message: '新規ユーザーを登録できませんでした');
       } else {
-        final userSnapShot = await read(firebaseFirestoreProvider)
-            .collection('users')
-            .doc()
-            .get();
-        if (userSnapShot.exists) {
-          return UserEntity.fromJson(userSnapShot.data()!);
-        } else {
-          return read(userRepositoryProvider).createUser(name, email, password);
-        }
+        //currentuserがnilで来ないか確認する
+        final userId = read(firebaseAuthProvider).currentUser?.uid;
+        return read(userRepositoryProvider)
+            .createUser(name, email, password, userId);
       }
     } on FirebaseAuthException catch (e) {
       throw CustomException(
@@ -41,7 +36,6 @@ class UserAuthRepository {
       final credential = await read(firebaseAuthProvider)
           .signInWithEmailAndPassword(email: email, password: password);
       if (credential.user != null) {
-        print(credential);
         //navigator ホーム画面遷移
       }
     } on FirebaseException catch (e) {
@@ -56,7 +50,22 @@ class UserAuthRepository {
         // 初期画面遷移
       }
     } catch (e) {
-      return AuthExceptionHandler.generateExceptionMessage(e);
+      throw AuthExceptionHandler.generateExceptionMessage(e);
+    }
+  }
+
+  Future<String> getCurrentUserId() async {
+    final userAuth = await read(firebaseAuthProvider).currentUser;
+    if (userAuth == null) {
+      throw CustomException(message: '認証確認できませんでした。');
+    } else {
+      final user = await read(firebaseFirestoreProvider)
+          .collection('users')
+          .where('userId', isEqualTo: userAuth.uid)
+          .get()
+          .then((QuerySnapshot) => QuerySnapshot.docs
+          .map((res) => UserEntity.fromJson(res.data())).toList());
+      return user[0].userId;
     }
   }
 }
