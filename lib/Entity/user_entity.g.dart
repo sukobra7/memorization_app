@@ -11,6 +11,7 @@ _$_UserEntity _$_$_UserEntityFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     email: json['email'] as String,
     password: json['password'] as String,
+    userId: json['userId'] as String,
   );
 }
 
@@ -19,4 +20,5 @@ Map<String, dynamic> _$_$_UserEntityToJson(_$_UserEntity instance) =>
       'name': instance.name,
       'email': instance.email,
       'password': instance.password,
+      'userId': instance.userId,
     };

@@ -23,7 +23,7 @@ class _$DeckEntityTearOff {
   _DeckEntity call(
       {required String title,
       required String description,
-      required int userId}) {
+      required String userId}) {
     return _DeckEntity(
       title: title,
       description: description,
@@ -43,7 +43,7 @@ const $DeckEntity = _$DeckEntityTearOff();
 mixin _$DeckEntity {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  int get userId => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,7 +56,7 @@ abstract class $DeckEntityCopyWith<$Res> {
   factory $DeckEntityCopyWith(
           DeckEntity value, $Res Function(DeckEntity) then) =
       _$DeckEntityCopyWithImpl<$Res>;
-  $Res call({String title, String description, int userId});
+  $Res call({String title, String description, String userId});
 }
 
 /// @nodoc
@@ -85,7 +85,7 @@ class _$DeckEntityCopyWithImpl<$Res> implements $DeckEntityCopyWith<$Res> {
       userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -96,7 +96,7 @@ abstract class _$DeckEntityCopyWith<$Res> implements $DeckEntityCopyWith<$Res> {
           _DeckEntity value, $Res Function(_DeckEntity) then) =
       __$DeckEntityCopyWithImpl<$Res>;
   @override
-  $Res call({String title, String description, int userId});
+  $Res call({String title, String description, String userId});
 }
 
 /// @nodoc
@@ -127,7 +127,7 @@ class __$DeckEntityCopyWithImpl<$Res> extends _$DeckEntityCopyWithImpl<$Res>
       userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -146,7 +146,7 @@ class _$_DeckEntity implements _DeckEntity {
   @override
   final String description;
   @override
-  final int userId;
+  final String userId;
 
   @override
   String toString() {
@@ -188,7 +188,7 @@ abstract class _DeckEntity implements DeckEntity {
   const factory _DeckEntity(
       {required String title,
       required String description,
-      required int userId}) = _$_DeckEntity;
+      required String userId}) = _$_DeckEntity;
 
   factory _DeckEntity.fromJson(Map<String, dynamic> json) =
       _$_DeckEntity.fromJson;
@@ -198,7 +198,7 @@ abstract class _DeckEntity implements DeckEntity {
   @override
   String get description => throw _privateConstructorUsedError;
   @override
-  int get userId => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$DeckEntityCopyWith<_DeckEntity> get copyWith =>

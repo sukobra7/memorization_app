@@ -10,7 +10,7 @@ _$_DeckEntity _$_$_DeckEntityFromJson(Map<String, dynamic> json) {
   return _$_DeckEntity(
     title: json['title'] as String,
     description: json['description'] as String,
-    userId: json['userId'] as int,
+    userId: json['userId'] as String,
   );
 }
 
